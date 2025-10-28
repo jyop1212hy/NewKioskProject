@@ -9,10 +9,10 @@ public class Main {
         // List 선언 및 초기화
         //List<MenuItem>chickenMenuItem = new ArrayList<>(List.of(new MenuItem("1. 양념치킨","치킨의 원조",2.0)));
         List<MenuItem>menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("군대리아","이등병은 먹을수 없습니다", 15.0));
-        menuItems.add(new MenuItem("게살버거","네모네모 스펀지밥이 만들어주는 햄버거", 20.0));
-        menuItems.add(new MenuItem("치즈버거","중국산 치즈가 들어간 치즈버서 입니다", 10.0));
-        menuItems.add(new MenuItem("공갈버거","다이어트에 최고 입니다", 36.0));
+        menuItems.add(new MenuItem("🪖군대리아","이등병은 먹을수 없습니다", 15.0));
+        menuItems.add(new MenuItem("🧽게살버거","네모네모 스펀지밥이 만들어주는 햄버거", 20.0));
+        menuItems.add(new MenuItem("🧀치즈버거","중국산 치즈가 들어간 치즈버서 입니다", 10.0));
+        menuItems.add(new MenuItem("🏃🏻공갈버거","다이어트에 최고 입니다", 36.0));
 
         // Scanner 선언
         Scanner scanner = new Scanner(System.in);
@@ -35,7 +35,7 @@ public class Main {
                 break;
 
                 // 입력된 숫자에 따른 처리
-            } else if (menunumber != 0) {
+                } else {
 
                 // 선택한 메뉴 : 이름, 가격, 설명
                 switch (menunumber) {
@@ -59,10 +59,6 @@ public class Main {
                         System.out.println("올바른 번호를 입력하세요.\n");
                         break;
                 }
-            } else {
-                scanner.close();
-                break;
-
             }
         }
     }
