@@ -19,15 +19,16 @@ public class Kiosk {
     public int filteredInputDevice() {
         while (true) {
             System.out.print("번호 입력: ");
-            int input = scanner.nextInt();
+            String input = scanner.nextLine();
             try {
-                return input;
+                int filteredInput = Integer.parseInt(input);
+                return filteredInput;
             } catch (NumberFormatException e) {
-                input =0;
                 System.out.println("\n‼️가만 있어봐 그니까 지금 글자로 주문을 하고싶은겨~??\n많이 급한가~? ⬆️위에 0번 보이제~?\n");
             }
         }
     }
+
 
     //기능
     //키오스크 시작 메서드
@@ -47,49 +48,61 @@ public class Kiosk {
                     scanner.close(); //입력 콘솔 제서
                     break;
 
-                } else if (1 <= filteredInput && filteredInput <= menuItemsList.categoryList.size()) {
-                    while (filteredInput != 0) {
+                } else if (1 <= filteredInput && filteredInput <= menuItemsList.categoryList.size() - 1) {
+                    //입력 값이 길이 1,2,3에 해당 된다면 반복하고 그게 아니면 반복을 종료한다.
+                    while (filteredInput <= menuItemsList.categoryList.size()) {
                         switch (filteredInput) {
 
                             //햄버거 메뉴
-                            case 1:
-                                menuItemsList.getBurgerMenuItemsList();
-                                int burgersMenuInput = filteredInputDevice();
-                                System.out.println("\n" + menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).name + "\n");
-                                break;
+                            case 1 -> {
+                                while (true) {
+                                    menuItemsList.getBurgerMenuItemsList();
+                                    int burgersMenuInput = filteredInputDevice();
+                                    System.out.printf("선택한 메뉴는: " + menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).name + "  |  " +
+                                            menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).price + "  |  " +
+                                            menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).description
+                                    );
+                                    break;
+                                }
+                            }
 
                             //음료수 메뉴
-                            case 2:
-                                menuItemsList.getDrinksMenuItemsList();
-                                int beverageMenuInputDevice = filteredInputDevice();
-                                System.out.println("\n" + menuItemsList.burgerMenuItems.get(beverageMenuInputDevice - 1).name + "\n");
-                                break;
+                            case 2 -> {
+                                while (filteredInput != menuItemsList.categoryList.size()) {
+                                    menuItemsList.getDrinksMenuItemsList();
+                                    int drinksInputDevice = filteredInputDevice();
+                                    System.out.println("선택한 메뉴는: " + menuItemsList.burgerMenuItems.get(drinksInputDevice - 1).name + "  |  " +
+                                            menuItemsList.burgerMenuItems.get(drinksInputDevice - 1).price + "  |  " +
+                                            menuItemsList.burgerMenuItems.get(drinksInputDevice - 1).description
+                                    );
+                                    break;
+                                }
+                            }
+
 
                             //디저트 메뉴
-                            case 3:
-                                menuItemsList.getDessertsmenuItemsList();
-                                int desserTmenuInputDevice = filteredInputDevice();
-                                System.out.println("\n" + menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).name + "\n");
-                                break;
-
-                            //상세 메뉴 입력 오류 안내 문구
-//                          default:
-//                               filteredInput=0;
-//                               System.out.println("️\n‼️️️가만 있어봐 그니까 그 많은양을 혼자 다먹는다는겨??\n저기 일단 짜장면 이라도 한그릇 먹고 와봐~\n");
-//                               break;
+                            case 3 -> {
+                                while (filteredInput != menuItemsList.categoryList.size()) {
+                                    menuItemsList.getDessertsmenuItemsList();
+                                    int desserTmenuInputDevice = filteredInputDevice();
+                                    System.out.println("선택한 메뉴는: " + menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).name + "  |  " +
+                                            menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).price + "  |  " +
+                                            menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).description
+                                    );
+                                    break;
+                                }
                             }
                         }
-
-                    //카테고리 메뉴 숫자 입력 오류 안내문구
-                    } else {
-                        System.out.println("️\n‼️가만 있어봐~내눈에는 그런 메뉴가 안보이는데?\n손님 눈에는 그게 있는거 아녀?? 아이구야~\n");
-                        break;
                     }
+                //메뉴 입력 오류 안내 문구 (메뉴번호 외의 숫자 입력의 경우)
+                } else {
+                    System.out.println("️\n‼️이이~~??\n‼️가만있어봐~ 그게 손님 눈에는 그게 있는거여~? 다시 봐바~\n");
+                }
 
-                    //상세 메뉴 숫자 오류 안내문구
+            //그 외 오류 처리
             } catch (IndexOutOfBoundsException e) {
                 scanner.nextLine();
-                System.out.println("\n🤔📢뭐가 마음에 안드는겨????\n");
+                System.out.println("\n‼️이이~~??\n‼️키보드가 성난겨???\n다시 처음부터 차근차근 자알 혀봐~");
             }
         }
     }
