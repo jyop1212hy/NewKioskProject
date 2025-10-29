@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         // List 선언 및 초기화
-        //List<MenuItem>chickenMenuItem = new ArrayList<>(List.of(new MenuItem("1. 양념치킨","치킨의 원조",2.0)));
         List<MenuItem>menuItems = new ArrayList<>();
         menuItems.add(new MenuItem("🪖군대리아","이등병은 먹을수 없습니다", 15.0));
         menuItems.add(new MenuItem("🧽게살버거","네모네모 스펀지밥이 만들어주는 햄버거", 20.0));

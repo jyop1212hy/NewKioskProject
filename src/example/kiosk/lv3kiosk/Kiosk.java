@@ -34,13 +34,14 @@ public class Kiosk {
                 int FilteringInput = Integer.parseInt(input);
 
                 // 3) if (프로그램을 종료) / else (선택한 메뉴 출력)
-                if (FilteringInput == 0) {
+//                if (1 <= FilteringInput && FilteringInput <= menuItems.size()) {
+                  if (FilteringInput == 0){
                     System.out.println("🙋🏼🙋🏻‍♀️🙋🏽‍♂️ 이~ 그려 멀리 안가니께 잘가~.");
                     break;
 
                 } else {
 
-                    // 선택한 메뉴 출력
+                    // 4) 선택한 메뉴 출력
                     switch (FilteringInput) {
                             case 1:
                                 System.out.println(menuItems.get(0).menuItemName + "\n");
@@ -63,7 +64,7 @@ public class Kiosk {
                     }
                 }
 
-            // 4) 예외 처리된 문자입력 안내문구
+            // 2-1) 예외 처리된 문자입력 안내문구
             } catch (Exception e) {
                 System.out.println("\n🤔📢0~4까지 눈에 안보이는겨?\n");
             }
