@@ -16,13 +16,14 @@ public class Kiosk {
     }
 
     //문자 입력 필터링
-    public int filteredInputDevice(String prompt) {
+    public int filteredInputDevice() {
         while (true) {
-            System.out.print(prompt);
-            String input = scanner.nextLine();
+            System.out.print("번호 입력: ");
+            int input = scanner.nextInt();
             try {
-                return Integer.parseInt(input);
+                return input;
             } catch (NumberFormatException e) {
+                input =0;
                 System.out.println("\n‼️가만 있어봐 그니까 지금 글자로 주문을 하고싶은겨~??\n많이 급한가~? ⬆️위에 0번 보이제~?\n");
             }
         }
@@ -38,42 +39,44 @@ public class Kiosk {
 
             try {
                 // 2) 카테고리 메뉴 선택
-                int filteredInput = filteredInputDevice("메뉴를 입력해 주세요: ");
+                int filteredInput = filteredInputDevice();
 
                 //프로그햄 종료
                 if (filteredInput == 0) {
                     System.out.println("🙋🏼🙋🏻‍♀️🙋🏽‍♂️ 이~~ 그려 멀리 안가니께 잘가~.");
                     scanner.close(); //입력 콘솔 제서
                     break;
-                } else if (1 <= filteredInput || filteredInput <= menuItemsList.categoryList.size()) {
+
+                } else if (1 <= filteredInput && filteredInput <= menuItemsList.categoryList.size()) {
                     while (filteredInput != 0) {
                         switch (filteredInput) {
 
                             //햄버거 메뉴
                             case 1:
                                 menuItemsList.getBurgerMenuItemsList();
-                                int burgersMenuInput = filteredInputDevice("번호를 입력해 주세요: ");
+                                int burgersMenuInput = filteredInputDevice();
                                 System.out.println("\n" + menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).name + "\n");
                                 break;
 
                             //음료수 메뉴
                             case 2:
                                 menuItemsList.getDrinksMenuItemsList();
-                                int beverageMenuInputDevice = filteredInputDevice("번호를 입력해 주세요: ");
+                                int beverageMenuInputDevice = filteredInputDevice();
                                 System.out.println("\n" + menuItemsList.burgerMenuItems.get(beverageMenuInputDevice - 1).name + "\n");
                                 break;
 
                             //디저트 메뉴
                             case 3:
                                 menuItemsList.getDessertsmenuItemsList();
-                                int desserTmenuInputDevice = filteredInputDevice("번호를 입력해 주세요: ");
+                                int desserTmenuInputDevice = filteredInputDevice();
                                 System.out.println("\n" + menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).name + "\n");
                                 break;
 
                             //상세 메뉴 입력 오류 안내 문구
-                            default:
-                                System.out.println("️\n‼️️️가만 있어봐 그니까 그 많은양을 혼자 다먹는다는겨??\n저기 일단 짜장면 이라도 한그릇 먹고 와봐~\n");
-                                break;
+//                          default:
+//                               filteredInput=0;
+//                               System.out.println("️\n‼️️️가만 있어봐 그니까 그 많은양을 혼자 다먹는다는겨??\n저기 일단 짜장면 이라도 한그릇 먹고 와봐~\n");
+//                               break;
                             }
                         }
 
@@ -85,6 +88,7 @@ public class Kiosk {
 
                     //상세 메뉴 숫자 오류 안내문구
             } catch (IndexOutOfBoundsException e) {
+                scanner.nextLine();
                 System.out.println("\n🤔📢뭐가 마음에 안드는겨????\n");
             }
         }
