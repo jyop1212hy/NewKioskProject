@@ -18,7 +18,7 @@ public class Main {
 
         while (true) {
             // 반복문을 활용해 List 안에 있는 MenuItem을 하나씩 출력
-            System.out.println("[ 🍗 닭 학살자 🐓 ]");
+            System.out.println("[ 🍗 햄버거 학살자 🐓 ]");
             for (int i = 0; i <menuItems.size(); i++)
                 System.out.printf((i+1) + ", " + "%-5s  | %-3s | %-3s%n", menuItems.get(i).menuItemName , menuItems.get(i).menuItemPrice , menuItems.get(i).menuItemPrice);
             System.out.println("0. 종료");
