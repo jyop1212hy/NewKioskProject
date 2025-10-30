@@ -1,11 +1,18 @@
-package example.kiosk.lv4kiosk;
+package example.kiosk.lv5kiosk;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        //카테고리 이름 리스트
+        List<String> categoryName = new ArrayList<>();
+        categoryName.add("[ MAIN MENU ]");
+        categoryName.add("1. Burgers");
+        categoryName.add("2. Drinks");
+        categoryName.add("3. Desserts");
+        categoryName.add("0. 종료 | 종료 |");
 
         //햄버거 메뉴 리스트
         List<MenuItem> burgerMenuItems = new ArrayList<>();
@@ -29,12 +36,16 @@ public class Main {
         dessertsmenuItems.add(new MenuItem("🥠공갈튀김","다이어트 최고의 관식", 40.0));
 
         //메뉴 클래스 인스턴스
-        List<MenuItem> menuItem = new ArrayList<>();
-        Menu menu = new Menu(burgerMenuItems,drinksMenuItems,dessertsmenuItems); //인자: 햄버거 메뉴, 카테도리 텍스트
+        List<List<MenuItem>> menuItems = new ArrayList<>();
+        menuItems.add(burgerMenuItems);
+        menuItems.add(drinksMenuItems);
+        menuItems.add(dessertsmenuItems);
+
+        Menu menu = new Menu(categoryName,menuItems); //인자: 카테도리 텍스트, 메뉴아이템
 
         //키오스크 클래스 인스턴스
-        Kiosk menuItemsList = new Kiosk(menu);
+        Kiosk kiosk = new Kiosk(menu);
         //Kiosk 클래스의 start함수 호출
-        menuItemsList.start();
+        kiosk.start();
         }
     }

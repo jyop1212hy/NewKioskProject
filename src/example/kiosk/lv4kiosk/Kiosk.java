@@ -48,7 +48,7 @@ public class Kiosk {
                     scanner.close(); //입력 콘솔 제서
                     break;
 
-                } else if (1 <= filteredInput && filteredInput <= menuItemsList.categoryList.size() - 1) {
+                } else if (1 <= filteredInput && filteredInput <= 3) {
                     //입력 값이 길이 1,2,3에 해당 된다면 반복하고 그게 아니면 반복을 종료한다.
                     switch (filteredInput) {
 
@@ -56,9 +56,9 @@ public class Kiosk {
                         case 1 -> {
                             menuItemsList.getBurgerMenuItemsList();
                             int burgersMenuInput = filteredInputDevice();
-                            System.out.printf("선택한 메뉴는: " + menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).name + "  |  " +
-                                    menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).price + "  |  " +
-                                    menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).description
+                            System.out.printf("선택한 메뉴는: " + menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).getName() + "  |  " +
+                                    menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).getPrice() + "  |  " +
+                                    menuItemsList.burgerMenuItems.get(burgersMenuInput - 1).getDescription()
                             );
 
                         }
@@ -66,9 +66,9 @@ public class Kiosk {
                         case 2 -> {
                             menuItemsList.getDrinksMenuItemsList();
                             int drinksInputDevice = filteredInputDevice();
-                            System.out.println("선택한 메뉴는: " + menuItemsList.burgerMenuItems.get(drinksInputDevice - 1).name + "  |  " +
-                                    menuItemsList.burgerMenuItems.get(drinksInputDevice - 1).price + "  |  " +
-                                    menuItemsList.burgerMenuItems.get(drinksInputDevice - 1).description
+                            System.out.println("선택한 메뉴는: " + menuItemsList.burgerMenuItems.get(drinksInputDevice - 1).getName() + "  |  " +
+                                    menuItemsList.burgerMenuItems.get(drinksInputDevice - 1).getPrice() + "  |  " +
+                                    menuItemsList.burgerMenuItems.get(drinksInputDevice - 1).getDescription()
                             );
                         }
 
@@ -77,9 +77,9 @@ public class Kiosk {
                         case 3 -> {
                             menuItemsList.getDessertsmenuItemsList();
                             int desserTmenuInputDevice = filteredInputDevice();
-                            System.out.println("선택한 메뉴는: " + menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).name + "  |  " +
-                                    menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).price + "  |  " +
-                                    menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).description
+                            System.out.println("선택한 메뉴는: " + menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).getName() + "  |  " +
+                                    menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).getPrice() + "  |  " +
+                                    menuItemsList.burgerMenuItems.get(desserTmenuInputDevice - 1).getDescription()
                             );
                         }
                     }

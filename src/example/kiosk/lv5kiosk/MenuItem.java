@@ -1,8 +1,6 @@
-package example.kiosk.lv4kiosk;
-
+package example.kiosk.lv5kiosk;
 
 public class MenuItem {
-
 
     //속성
     private String name;
