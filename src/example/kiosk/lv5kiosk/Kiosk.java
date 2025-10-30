@@ -89,7 +89,7 @@ public class Kiosk {
 
                 // 그 외 오류 처리
             } catch (IndexOutOfBoundsException e) {
-                // ⭐️ [Lv. 5] IndexOutOfBounds는 메뉴 번호를 벗어난 경우 발생 (예: 99 입력)
+                //번호를 벗어난 경우 발생 (예: 99 입력)
                 System.out.println("\n‼️이이~~??\n‼️키보드가 성난겨???\n메뉴 번호를 다시 확인해봐유~");
             } catch (Exception e) {
                 System.out.println("\n‼️예상치 못한 오류가 발생했슈. 다시 시도해봐유.");
